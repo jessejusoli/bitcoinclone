@@ -31,7 +31,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x");
+uint256 hashGenesisBlock("0xc42cd546606b9906a27f59b6c8bc6cc0946b6a3227aa79eb066a255a725115d3");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 32);
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2739,7 +2739,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xd2;
         pchMessageStart[2] = 0x09;
         pchMessageStart[3] = 0x07;
-        hashGenesisBlock = uint256("0x");
+        hashGenesisBlock = uint256("0xc42cd546606b9906a27f59b6c8bc6cc0946b6a3227aa79eb066a255a725115d3");
     }
 
     //
@@ -2754,8 +2754,8 @@ bool LoadBlockIndex()
 
 bool InitBlockIndex() {
     // Check whether we're already initialized
-    //if (pindexGenesisBlock != NULL)
-        //return true;
+    if (pindexGenesisBlock != NULL)
+        return true;
 
     // Use the provided setting for -txindex in the new database
     fTxIndex = GetBoolArg("-txindex", false);
@@ -2765,11 +2765,11 @@ bool InitBlockIndex() {
     // Only add the genesis block if not reindexing (in which case we reuse the one already on disk)
     if (!fReindex) {
         // Genesis Block:
-        // CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1231006505, nBits=1d00ffff, nNonce=2083236893, vtx=1)
-        //   CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        //     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73)
-        //     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
-        //   vMerkleTree: 4a5e1e
+        // CBlock(hash=c42cd546606b9906a27f59b6c8bc6cc0946b6a3227aa79eb066a255a725115d3, ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000, hashMerkleRoot=26aed184b582168330befa7c23f0c5dc101661dd2a74e64a86d6c36651a4a74e, nTime=1231006505, nBits=1d00ffff, nNonce=0, vtx=1)
+        //2018-01-10 20:11:49   CTransaction(hash=26aed184b582168330befa7c23f0c5dc101661dd2a74e64a86d6c36651a4a74e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        //CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044c5e5468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73207c205265626f6f74206279204a65737365204a75736f6c69)
+        //CTxOut(nValue=50.00000000, scriptPubKey=201804678afdb0fe5548271967f1a6)
+        //vMerkleTree: 26aed184b582168330befa7c23f0c5dc101661dd2a74e64a86d6c36651a4a74e 
 
         // Genesis block
         const char* pszTimestamp = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks | Reboot by Jesse Jusoli";
