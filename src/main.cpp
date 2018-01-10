@@ -2754,7 +2754,7 @@ bool LoadBlockIndex()
 
 bool InitBlockIndex() {
     // Check whether we're already initialized
-    if (pindexGenesisBlock != NULL)
+    if (pindexGenesisBlock == NULL)
         return true;
 
     // Use the provided setting for -txindex in the new database
