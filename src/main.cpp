@@ -2799,7 +2799,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x"));
+        assert(block.hashMerkleRoot == uint256("0x26aed184b582168330befa7c23f0c5dc101661dd2a74e64a86d6c36651a4a74e"));
             
         block.print();
         assert(hash == hashGenesisBlock);
