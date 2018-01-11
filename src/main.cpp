@@ -31,7 +31,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x");
+uint256 hashGenesisBlock("0xf6cedf0ac9c5bc6d9cbdde95e6b8dd92c80f31eac1f2c8564bdd8e8b8ba1bdcc");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 32);
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2739,7 +2739,7 @@ bool LoadBlockIndex()
         pchMessageStart[1] = 0xd2;
         pchMessageStart[2] = 0x09;
         pchMessageStart[3] = 0x07;
-        hashGenesisBlock = uint256("0x");
+        hashGenesisBlock = uint256("0xf6cedf0ac9c5bc6d9cbdde95e6b8dd92c80f31eac1f2c8564bdd8e8b8ba1bdcc");
     }
 
     //
@@ -2754,8 +2754,8 @@ bool LoadBlockIndex()
 
 bool InitBlockIndex() {
     // Check whether we're already initialized
-    //if (pindexGenesisBlock != NULL)
-      //  return true;
+    if (pindexGenesisBlock != NULL)
+        return true;
 
     // Use the provided setting for -txindex in the new database
     fTxIndex = GetBoolArg("-txindex", false);
